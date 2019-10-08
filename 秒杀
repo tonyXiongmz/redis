@@ -1,0 +1,25 @@
+流量高峰队列操作
+  判断队列的长度,到达多少长度之后不再写入队列中,采用先进先出的方式,RPUSH写入,Lpop弹出.将用户ID拼接微妙时间作为队列的值.
+  $redis_name = 'miaosha';
+  $uid = $_REQUEST['uid'];
+  $key = $uid.'%'.microtime();
+  $length = $redis->llen($redis_name);
+  if($length < 10){
+    $redis->rpush($redis_name,$key);
+  }
+  //将队列里的值写入mysql,
+  while(1){
+  $user = $redis->lpop($redis_name);
+  //如果值不存在,跳出该循环
+  if(!$user || $user='nil'){
+    sleep(1);
+    continue;
+  }
+  //写入mysql
+  $data = explode('%',$user);
+  $res = $mysql->insert($table,$data);
+  //写入失败,将队列值重新写入队列
+  if(!$res){
+      $redis->rpush($redis_name.$user);
+    }
+  }
