@@ -29,3 +29,17 @@ hmget key field value
 商品ID 为field
 商品数量 为value
 hset 用户ID 商品ID 商品数量
+
+
+list类型
+lpush  左侧写入
+lpop   左侧弹出
+rpush  右侧写入
+rpop   右侧弹出
+lrange  区间获取值
+blpop  timeout  有值弹出，没值一直阻塞等待
+brpop  timeout  有值弹出，没值一直阻塞等待
+
+栈先进后出
+队列 先进先出
+阻塞队列  lpush + brpop
