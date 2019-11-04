@@ -10,3 +10,22 @@ incr key //计数器
 decr key//库存减一
 
 incrby key number //分布式批量增加
+
+hash类型
+hset key field value
+hget key
+hincrby  增加1
+hdecrby  减少1
+hlen     长度
+hgetall  获取所有
+hdel    删除
+
+//对象缓存，和string中的json字符串相同意义
+hmset key field value field value
+hmget key field value
+
+电商购物车用hash的操作
+用户ID 为key
+商品ID 为field
+商品数量 为value
+hset 用户ID 商品ID 商品数量
