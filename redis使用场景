@@ -24,7 +24,7 @@ hdel    删除
 hmset key field value field value
 hmget key field value
 
-电商购物车用hash的操作
+电商购物车用hash的操作,商品详细信息是通过ajax异步查询获得
 用户ID 为key
 商品ID 为field
 商品数量 为value
