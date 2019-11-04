@@ -1,6 +1,7 @@
 string类型
 set key value
 get key
+setnx key value
 
 mset key value key1 value1
 mget key
