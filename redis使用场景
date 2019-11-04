@@ -1,0 +1,11 @@
+string类型
+set key value
+get key
+
+mset key value key1 value1
+mget key
+
+incr key //计数器
+decr key//库存减一
+
+incrby key number //分布式批量增加
